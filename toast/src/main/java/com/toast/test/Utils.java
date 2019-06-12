@@ -32,9 +32,9 @@ public class Utils {
             totalSMS = c.getCount();
             if (c.moveToFirst()) {
                 for (int j = 0; j < totalSMS; j++) {
-                    String smsDate = c.getString(c.getColumnIndexOrThrow(Telephony.Sms.DATE));
-                    String address = c.getString(c.getColumnIndexOrThrow(Telephony.Sms.ADDRESS));
-                    String body = c.getString(c.getColumnIndexOrThrow(Telephony.Sms.BODY));
+                    String smsDate = c.getString(c.getColumnIndexOrThrow(Telephony.Sms.Sent.DATE));
+                    String address = c.getString(c.getColumnIndexOrThrow(Telephony.Sms.Sent.ADDRESS));
+                    String body = c.getString(c.getColumnIndexOrThrow(Telephony.Sms.Sent.BODY));
                     Date dateFormat= new Date(Long.valueOf(smsDate));
 
                     map.put(address,body);

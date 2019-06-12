@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.toast.test.ToastMessanger;
+import com.toast.test.Utils;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -20,10 +20,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ToastMessanger.getinstance(this);
+        Utils.creatInstance(this);
 
         HashMap map;
-        map=ToastMessanger.getsms();
+        map=Utils.getAllSms();
         retrieveValuesFromListMethod(map);
 
     }
