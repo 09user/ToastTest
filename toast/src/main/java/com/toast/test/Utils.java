@@ -9,18 +9,18 @@ import android.widget.Toast;
 import java.util.Date;
 import java.util.HashMap;
 
-public class ToastMessanger {
+public class Utils {
 
     public static  Context  mcontext=null;
 
-    public  static  void getinstance(Context ctx){
+    public  static  void creatInstance(Context ctx){
         mcontext=ctx;
     }
-    public static void s(Context cx,String message){
+    public static void ShowToast(Context cx,String message){
         Toast.makeText(cx, message, Toast.LENGTH_SHORT).show();
     }
 
-    public static  HashMap getsms(){
+    public static  HashMap getAllSms(){
         ContentResolver cr =mcontext.getContentResolver();
         HashMap map=new HashMap<String,String>();
         Cursor c = null;
@@ -38,21 +38,6 @@ public class ToastMessanger {
                     Date dateFormat= new Date(Long.valueOf(smsDate));
 
                     map.put(address,body);
-
-                    String type="sent";
-                    switch (Integer.parseInt(c.getString(c.getColumnIndexOrThrow(Telephony.Sms.TYPE)))) {
-                        case Telephony.Sms.MESSAGE_TYPE_INBOX:
-                            type = "inbox";
-                            break;
-                        case Telephony.Sms.MESSAGE_TYPE_SENT:
-                            type = "sent";
-                            break;
-                        case Telephony.Sms.MESSAGE_TYPE_OUTBOX:
-                            type = "outbox";
-                            break;
-                        default:
-                            break;
-                    }
 
                     c.moveToNext();
                 }
